@@ -13,7 +13,7 @@ html{
 }
 
 body{
-  overflow:hidden;
+  overflow-x:hidden;
   position:relative;
   background:
     radial-gradient(circle at top left,
@@ -96,7 +96,7 @@ body::before{
   text-align:justify;
 }
 
-/* Mobile Layout */
+/* Tablet */
 @media (max-width:1100px){
   .home-title-image{
     width:min(1080px, 100%);
@@ -109,6 +109,7 @@ body::before{
   }
 }
 
+/* Mobile */
 @media (max-width:768px){
 
   .home-main{
@@ -124,17 +125,17 @@ body::before{
 
   .home-sub{
     position:fixed;
-    right:16px;
-    bottom:18px;
-    left:auto;
-    top:auto;
-    margin:0;
+    right:12px;
+    bottom:12px;
+
     width:120px;
-    max-width:none;
+
     font-size:7px !important;
     line-height:1.35 !important;
+
     text-align:left;
-    z-index:5;
+
+    z-index:9999; 
   }
 
 }
