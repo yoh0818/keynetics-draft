@@ -82,10 +82,6 @@ body::before{
 
   position:relative;
   left:50px;
-}
-
-.home-title-image{
-  position:relative;
   top:80px;
 }
 
@@ -127,28 +123,20 @@ body::before{
     width:100%;
     max-height:none;
     left:0;
+    top:0;   /* 🔥 여기로 위로 올림 */
   }
-
-  @media (max-width:768px){
-
-  .home-title-image{
-    top:20px;  
-  }
-
-}
 
   .home-sub{
     position:absolute;
-    right:16px;        /* 🔥 오른쪽 고정 */
-    bottom:40px;       /* 🔥 아래쪽 위치 */
+    right:16px;
+    bottom:40px;
 
-    width:160px;       /* 🔥 작은 박스 */
-    max-width:none;
+    width:160px;
 
     font-size:8px !important;
     line-height:1.4 !important;
 
-    text-align:left;   /* 🔥 줄 깔끔하게 */
+    text-align:left;
   }
 
 }
