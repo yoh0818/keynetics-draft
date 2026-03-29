@@ -11,12 +11,29 @@
   --blue:#4f76d6;
 }
 
+/* Background Pattern */
+body{
+  position:relative;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("diamond.jpg") center center / cover no-repeat;
+  opacity:.4;
+  pointer-events:none;
+  z-index:0;
+}
+
 /* MAIN Layout */
 main{
   min-height:calc(100dvh - 72px);
   display:grid;
   place-items:center;
   padding:16px;
+  position:relative;
+  z-index:1;
 }
 
 .level-row{
@@ -93,7 +110,6 @@ main{
   }
 }
 
-
 @media (max-width: 480px){
   main{
     min-height:calc(100dvh - 72px);
@@ -120,6 +136,7 @@ main{
 </head>
 
 <body>
+
 <div class="overlay" id="overlay" hidden></div>
 
 <aside class="sidebar" id="sidebar" aria-hidden="true">
@@ -169,7 +186,6 @@ main{
     </ul>
   </nav>
 
- 
 </aside>
 
 <header class="topbar">
