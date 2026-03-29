@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Keynetics — Companies</title>
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+html{
+  scrollbar-gutter: stable;
+}
+
+body{
+  overflow-y: scroll;
+}
+
+:root{
+  --blue:#56BDAA;
+}
+
+/* Background */
+
+.bg-svg{
+  position:fixed;
+  pointer-events:none;
+  opacity:.3;
+  z-index:0;
+}
+
+.bg-svg.top-right{
+  top:-80px;
+  right:-80px;
+  width:350px;
+}
+
+.bg-svg.bottom-left{
+  bottom:-80px;
+  left:-50px;
+  width:350px;
+}
+
+/* Main */
+
+main{
+  max-width:1100px;
+  margin:0 auto;
+  padding:40px 16px 80px;
+  position:relative;
+  z-index:1;
+}
+
+
+
+.hero{
+  width:min(900px,100%);
+  margin:0 auto 28px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:48px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero h1{
+  margin:0 0 14px;
+  font-size:clamp(34px,4vw,48px);
+  color:var(--blue);
+}
+
+.hero p{
+  margin:0;
+  color:var(--muted);
+  font-size:16px;
+}
+
+/* Grid System */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:16px;
+}
+
+.company-link{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  grid-column:span 12;
+}
+
+.card{
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:20px;
+  background:#fff;
+  transition:.2s ease;
+}
+
+.company-link:hover .card{
+  background:var(--panel);
+  transform:translateY(-3px);
+}
+
+/* Comapnies list */ 
+
+.company-card{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 140px;
+  gap:20px;
+  align-items:center;
+}
+
+.company-copy h2{
+  margin:0 0 8px;
+  font-size:18px;
+  color:var(--blue);
+}
+
+.company-copy p{
+  margin:0;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.6;
+}
+
+.company-thumb{
+  width:140px;
+  height:140px;
+  border:1px solid #dcdcdc;
+  border-radius:16px;
+  overflow:hidden;
+  background:#f2f2f2;
+}
+
+.company-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+/* Desktop Layout */
+
+@media(min-width:820px){
+  .company-link.card--half{
+    grid-column:span 6;
+  }
+}
+
+/* Mobile Layout */
+
+@media(max-width:768px){
+  .bg-svg{
+    display:none;
+  }
+
+  main{
+    padding:24px 14px 56px;
+  }
+
+  .hero{
+    padding:28px 20px;
+    margin-bottom:20px;
+  }
+
+  .hero h1{
+    font-size:clamp(28px,8vw,36px);
+  }
+
+  .grid{
+    gap:14px;
+  }
+
+  .company-card{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+
+  .company-thumb{
+    margin:0 auto;
+  }
+}
+
+
+
+@media(max-width:480px){
+  .hero{
+    padding:22px 16px;
+  }
+
+  .company-copy h2{
+    font-size:17px;
+  }
+
+  .company-copy p{
+    font-size:13px;
+  }
+
+  .company-thumb{
+    width:120px;
+    height:120px;
+  }
+}
+
+
+
+.nav-with-icon{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.nav-icon{
+  width:16px;
+  height:16px;
+  object-fit:contain;
+}
+
+.hamburger{
+  width:44px;
+  height:44px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  padding:0;
+}
+
+.hamburger__icon{
+  color:var(--blue);
+  font-size:18px;
+  line-height:1;
+  transform:translateY(-1px);
+}
+
+.brand strong{
+  color:var(--blue);
+}
+</style>
+</head>
+
+<body>
+
+<img src="4(storke).svg" class="bg-svg top-right" alt="">
+<img src="4(storke).svg" class="bg-svg bottom-left" alt="">
+
+<div class="overlay" id="overlay" hidden></div>
+
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+
+<div class="sidebar__top">
+<strong>MENU</strong>
+<button class="closebtn" id="closeMenu" aria-label="Close menu">×</button>
+</div>
+
+<nav aria-label="Primary">
+<ul class="navlist">
+
+<li><a href="index.html">Home</a></li>
+
+<li>
+<a href="tutorials.html" class="nav-with-icon">
+<img src="1.svg" class="nav-icon" alt="">
+<span>After Effects Tutorials</span>
+</a>
+</li>
+
+<li>
+<a href="plugins.html" class="nav-with-icon">
+<img src="2.svg" class="nav-icon" alt="">
+<span>Useful Plugins/Scripts</span>
+</a>
+</li>
+
+<li>
+<a href="quiz.html" class="nav-with-icon">
+<img src="3.svg" class="nav-icon" alt="">
+<span>Quiz</span>
+</a>
+</li>
+
+<li>
+<a href="artists.html" class="nav-with-icon is-active">
+<img src="4.svg" class="nav-icon" alt="">
+<span>Motion Graphics Artists &amp; Companies</span>
+</a>
+</li>
+
+</ul>
+</nav>
+
+</aside>
+
+<header class="topbar">
+<div class="topbar__inner">
+
+<button class="hamburger" id="openMenu" aria-label="Open menu">
+<span class="hamburger__icon">☰</span>
+</button>
+
+<div class="brand">
+<strong>Keynetics</strong>
+</div>
+
+</div>
+</header>
+
+<main>
+
+<div class="hero">
+<h1>Companies</h1>
+<p>Famous Motion Graphics Companies Reference</p>
+</div>
+
+<div class="grid">
+
+<a class="company-link card--half" href="https://www.ordinaryfolk.co/" target="_blank" rel="noopener noreferrer">
+  <article class="card">
+    <div class="company-card">
+      <div class="company-copy">
+        <h2>Ordinary Folk</h2>
+        <p>Ordinary Folk is a motion graphics studio based in Vancouver, Canada. They are known for leading trends in 2D motion graphics.</p>
+      </div>
+      <div class="company-thumb">
+        <img src="Ordinary Folk.jpg" alt="Ordinary Folk">
+      </div>
+    </div>
+  </article>
+</a>
+
+<a class="company-link card--half" href="https://superverymore.tv/projects" target="_blank" rel="noopener noreferrer">
+  <article class="card">
+    <div class="company-card">
+      <div class="company-copy">
+        <h2>Super Very More</h2>
+        <p>Super Very More is a motion graphics studio based in Seoul, South Korea. They specialize in creating 3D motion graphics.</p>
+      </div>
+      <div class="company-thumb">
+        <img src="Super Very More.jpg" alt="Super Very More">
+      </div>
+    </div>
+  </article>
+</a>
+
+<a class="company-link card--half" href="https://thefurrow.tv/" target="_blank" rel="noopener noreferrer">
+  <article class="card">
+    <div class="company-card">
+      <div class="company-copy">
+        <h2>The Furrow</h2>
+        <p>The Furrow is a motion graphics studio based in Lexington, Kentucky, USA. They are known for bold, trendy visuals and striking use of colour.</p>
+      </div>
+      <div class="company-thumb">
+        <img src="The Furrow.jpg" alt="The Furrow">
+      </div>
+    </div>
+  </article>
+</a>
+
+<a class="company-link card--half" href="https://flatwhite-portfolio.netlify.app/" target="_blank" rel="noopener noreferrer">
+  <article class="card">
+    <div class="company-card">
+      <div class="company-copy">
+        <h2>FlatWhite Motion</h2>
+        <p>FlatWhite Motion is a motion graphics studio based in Sydney and Qingdao. They create motion graphics using character animation and hand-drawn techniques.</p>
+      </div>
+      <div class="company-thumb">
+        <img src="Flat White Motion.jpg" alt="FlatWhite Motion">
+      </div>
+    </div>
+  </article>
+</a>
+
+</div>
+
+</main>
+
+<script>
+const openBtn = document.getElementById("openMenu")
+const closeBtn = document.getElementById("closeMenu")
+const sidebar = document.getElementById("sidebar")
+const overlay = document.getElementById("overlay")
+
+function openMenu(){
+  sidebar.classList.add("is-open")
+  overlay.classList.add("is-open")
+  overlay.hidden = false
+  sidebar.setAttribute("aria-hidden","false")
+}
+
+function closeMenu(){
+  sidebar.classList.remove("is-open")
+  overlay.classList.remove("is-open")
+  overlay.hidden = true
+  sidebar.setAttribute("aria-hidden","true")
+}
+
+openBtn.onclick = openMenu
+closeBtn.onclick = closeMenu
+overlay.onclick = closeMenu
+</script>
+
+</body>
+</html>

@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Keynetics — Intermediate Tutorials</title>
+<link rel="stylesheet" href="styles.css" />
+
+<style>
+html{
+  scrollbar-gutter:stable;
+}
+
+body{
+  position:relative;
+  overflow-y:scroll;
+}
+
+/* Keyframe Design */
+
+.bg-svg{
+  position:fixed;
+  pointer-events:none;
+  opacity:.2;
+  z-index:0;
+}
+
+.bg-svg.top-right{
+  top:0;
+  right:0;
+  width:600px;
+  transform:translate(80px, -100px);
+}
+
+.bg-svg.bottom-left{
+  bottom:0;
+  left:0;
+  width:600px;
+  transform:translate(-100px, 100px);
+}
+
+/* Main Layout */
+
+.tutorial-page{
+  max-width:1100px;
+  margin:0 auto;
+  padding:40px 16px 80px;
+  position:relative;
+  z-index:1;
+}
+
+.tutorial-header{
+  width:min(900px,100%);
+  margin:0 auto 28px;
+  border:1px solid var(--line);
+  background:var(--panel);
+  border-radius:var(--radius);
+  padding:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.tutorial-header h1{
+  margin:0;
+  font-size:clamp(32px,4vw,46px);
+  color:#3F75E0;
+}
+
+/* Tutorials */
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.video-card{
+  text-decoration:none;
+  color:black;
+  text-align:center;
+}
+
+.video-thumb{
+  aspect-ratio:1/1;
+  background:#f2f2f2;
+  border:1px solid #dcdcdc;
+  border-radius:16px;
+  position:relative;
+  overflow:hidden;
+}
+
+.video-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.video-label{
+  position:absolute;
+  left:10px;
+  bottom:10px;
+  font-size:12px;
+  color:#666;
+  background:#ffffffcc;
+  border:1px solid #ddd;
+  padding:3px 7px;
+  border-radius:999px;
+}
+
+.video-title{
+  margin-top:8px;
+  font-size:14px;
+  line-height:1.4;
+}
+
+
+
+.nav-with-icon{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.nav-icon{
+  width:9px !important;
+  height:9px !important;
+  min-width:9px !important;
+  min-height:9px !important;
+  max-width:9px !important;
+  max-height:9px !important;
+  object-fit:contain;
+  flex:0 0 9px !important;
+  display:block;
+  opacity:.75;
+  transform:translateY(1px);
+}
+
+.nav-icon-spacer{
+  width:9px;
+  height:9px;
+  flex:0 0 9px;
+  display:block;
+}
+
+.hamburger{
+  padding:0;
+}
+
+.hamburger__icon{
+  font-size:18px;
+  line-height:1;
+  transform:translateY(-1px);
+  display:block;
+  color:#3F75E0;
+}
+
+.brand strong{
+  color:#3F75E0;
+}
+
+/* Mobile Layout */
+
+@media (max-width: 900px){
+  .video-grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media (max-width: 768px){
+  .bg-svg{
+    display:none;
+  }
+
+  .tutorial-page{
+    padding:24px 14px 56px;
+  }
+
+  .tutorial-header{
+    margin:0 auto 20px;
+    padding:24px 18px;
+  }
+
+  .tutorial-header h1{
+    font-size:clamp(28px,8vw,36px);
+    line-height:1.15;
+  }
+
+  .video-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+
+  .video-title{
+    font-size:13px;
+  }
+}
+
+@media (max-width: 480px){
+  .tutorial-page{
+    padding:20px 12px 44px;
+  }
+
+  .tutorial-header{
+    padding:20px 14px;
+  }
+
+  .tutorial-header h1{
+    font-size:clamp(24px,9vw,30px);
+  }
+
+  .video-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .video-title{
+    font-size:14px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<img src="1(storke).svg" class="bg-svg top-right" alt="">
+<img src="1(storke).svg" class="bg-svg bottom-left" alt="">
+
+<div class="overlay" id="overlay" hidden></div>
+
+<aside class="sidebar" id="sidebar" aria-hidden="true">
+
+  <div class="sidebar__top">
+    <strong>MENU</strong>
+    <button class="closebtn" id="closeMenu" aria-label="Close menu">×</button>
+  </div>
+
+  <nav aria-label="Primary">
+    <ul class="navlist">
+
+      <li>
+        <a href="index.html">
+          <span class="nav-icon-spacer"></span>
+          <span>Home</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="tutorials.html" class="nav-with-icon is-active">
+          <img src="1.svg" class="nav-icon" alt="">
+          <span>After Effects Tutorials</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="plugins.html" class="nav-with-icon">
+          <img src="2.svg" class="nav-icon" alt="">
+          <span>Useful Plugins/Scripts</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="quiz.html" class="nav-with-icon">
+          <img src="3.svg" class="nav-icon" alt="">
+          <span>Quiz</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="artists.html" class="nav-with-icon">
+          <img src="4.svg" class="nav-icon" alt="">
+          <span>Motion Graphics Artists &amp; Companies</span>
+        </a>
+      </li>
+
+    </ul>
+  </nav>
+
+</aside>
+
+<header class="topbar">
+  <div class="topbar__inner">
+
+    <button class="hamburger" id="openMenu" aria-label="Open menu" aria-expanded="false">
+      <span class="hamburger__icon">☰</span>
+    </button>
+
+    <div class="brand">
+      <strong>Keynetics</strong>
+    </div>
+
+  </div>
+</header>
+
+<main class="tutorial-page">
+
+  <section class="tutorial-header">
+    <h1>Intermediate Tutorials</h1>
+  </section>
+
+  <section class="video-grid">
+
+    <a href="https://www.youtube.com/watch?v=euIDwp4bsi0" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/euIDwp4bsi0/hqdefault.jpg" alt="Fill, Tint, Tritone, and CC Toner effects explanation thumbnail">
+        <span class="video-label">01</span>
+      </div>
+      <p class="video-title">Fill + Tint + Tritone + CC Toner Effects Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=76LQhG-nl_0" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/76LQhG-nl_0/hqdefault.jpg" alt="Hue and Saturation effect explanation thumbnail">
+        <span class="video-label">02</span>
+      </div>
+      <p class="video-title">Hue &amp; Saturation Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=nP47ynBc3B8" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/nP47ynBc3B8/hqdefault.jpg" alt="Levels and Curves effects explanation thumbnail">
+        <span class="video-label">03</span>
+      </div>
+      <p class="video-title">Levels + Curve Effects Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=t40ZTEBr_M0" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/t40ZTEBr_M0/hqdefault.jpg" alt="Glow effect explanation thumbnail">
+        <span class="video-label">04</span>
+      </div>
+      <p class="video-title">Glow Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=N2qxF8V57FE" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/N2qxF8V57FE/hqdefault.jpg" alt="Echo effect explanation thumbnail">
+        <span class="video-label">05</span>
+      </div>
+      <p class="video-title">Echo Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=1hhA-21q8Xw" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/1hhA-21q8Xw/hqdefault.jpg" alt="Invert effect explanation thumbnail">
+        <span class="video-label">06</span>
+      </div>
+      <p class="video-title">Invert Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=AbY7V6bJITA" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/AbY7V6bJITA/hqdefault.jpg" alt="Wave Warp effect explanation thumbnail">
+        <span class="video-label">07</span>
+      </div>
+      <p class="video-title">Wave Warp Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=Iu1E9M1EDHY" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/Iu1E9M1EDHY/hqdefault.jpg" alt="Posterize Time effect explanation thumbnail">
+        <span class="video-label">08</span>
+      </div>
+      <p class="video-title">Posterize Time Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=pWSNY7XvN-A" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/pWSNY7XvN-A/hqdefault.jpg" alt="Noise HLS effect explanation thumbnail">
+        <span class="video-label">09</span>
+      </div>
+      <p class="video-title">Noise HLS Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=JhdhSF2ibgQ" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/JhdhSF2ibgQ/hqdefault.jpg" alt="Gradient Ramp explanation thumbnail">
+        <span class="video-label">10</span>
+      </div>
+      <p class="video-title">Gradient Ramp Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=MfyN1bBe8rE" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/MfyN1bBe8rE/hqdefault.jpg" alt="4-Colour Gradient effect explanation thumbnail">
+        <span class="video-label">11</span>
+      </div>
+      <p class="video-title">4-Colour Gradient Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=MyEZcFBwloY" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/MyEZcFBwloY/hqdefault.jpg" alt="Fast Box Blur and Gaussian Blur effects explanation thumbnail">
+        <span class="video-label">12</span>
+      </div>
+      <p class="video-title">Fast Box Blur + Gaussian Blur Effects Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=5Ug1sVc7uYE" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/5Ug1sVc7uYE/hqdefault.jpg" alt="Grid effect explanation thumbnail">
+        <span class="video-label">13</span>
+      </div>
+      <p class="video-title">Grid Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=0n0pZp_BA2w" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/0n0pZp_BA2w/hqdefault.jpg" alt="CC Light Sweep effect explanation thumbnail">
+        <span class="video-label">14</span>
+      </div>
+      <p class="video-title">CC Light Sweep Effect Explanation</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=wjOeQqifBE0" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/wjOeQqifBE0/hqdefault.jpg" alt="How to do 3D tracking thumbnail">
+        <span class="video-label">15</span>
+      </div>
+      <p class="video-title">How to Do 3D Tracking</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=zkqtTyus5cY" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/zkqtTyus5cY/hqdefault.jpg" alt="How to use the camera thumbnail">
+        <span class="video-label">16</span>
+      </div>
+      <p class="video-title">How to Use the Camera</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=sqyFfIeSIH0" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/sqyFfIeSIH0/hqdefault.jpg" alt="How to use time remapping thumbnail">
+        <span class="video-label">17</span>
+      </div>
+      <p class="video-title">How to Use Time Remapping</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=eoOIrdb_0ko" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/eoOIrdb_0ko/hqdefault.jpg" alt="How to use Roto Brush thumbnail">
+        <span class="video-label">18</span>
+      </div>
+      <p class="video-title">How to Use Roto Brush</p>
+    </a>
+
+    <a href="https://www.youtube.com/watch?v=AcEIT03Mrzk" target="_blank" rel="noopener noreferrer" class="video-card">
+      <div class="video-thumb">
+        <img src="https://img.youtube.com/vi/AcEIT03Mrzk/hqdefault.jpg" alt="How to do character animation rigging thumbnail">
+        <span class="video-label">19</span>
+      </div>
+      <p class="video-title">How to Do Character Animation (Rigging)</p>
+    </a>
+
+  </section>
+
+</main>
+
+<script src="app.js"></script>
+</body>
+</html>
