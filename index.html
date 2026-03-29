@@ -86,14 +86,14 @@ body::before{
 
 .home-sub{
   margin:26px 0 0;
-  width:520px;            
+  width:520px;
   font-size:13px;
   line-height:1.55;
   color:var(--muted);
   position:relative;
   left:800px;
   top:150px;
-  text-align:justify;      
+  text-align:justify;
 }
 
 /* Mobile Layout */
@@ -123,14 +123,18 @@ body::before{
   }
 
   .home-sub{
-    position:absolute;
+    position:fixed;
     right:16px;
-    top:320px;
-    width:140px;
-    font-size:8px !important;
-    line-height:1.4 !important;
+    bottom:18px;
+    left:auto;
+    top:auto;
+    margin:0;
+    width:120px;
+    max-width:none;
+    font-size:7px !important;
+    line-height:1.35 !important;
     text-align:left;
-    z-index:2;
+    z-index:5;
   }
 
 }
