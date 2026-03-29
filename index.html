@@ -89,7 +89,6 @@ body::before{
   top:80px;
 }
 
-
 .home-sub{
   margin:26px 0 0;
 
@@ -100,7 +99,7 @@ body::before{
 
   position:relative;
   left:800px;
-  top: 150px;
+  top:150px;
 
   text-align:justify;      
 }
@@ -131,14 +130,17 @@ body::before{
   }
 
   .home-sub{
-    left:0;
-    margin-left:0;
-    text-align:center;
-    max-width:320px;
-    width:100%;
+    position:absolute;
+    right:16px;        /* 🔥 오른쪽 고정 */
+    bottom:40px;       /* 🔥 아래쪽 위치 */
+
+    width:160px;       /* 🔥 작은 박스 */
+    max-width:none;
+
     font-size:8px !important;
     line-height:1.4 !important;
-    margin:20px auto 0;
+
+    text-align:left;   /* 🔥 줄 깔끔하게 */
   }
 
 }
