@@ -79,7 +79,6 @@ body::before{
   height:auto;
   max-height:56vh;
   object-fit:contain;
-
   position:relative;
   left:50px;
   top:80px;
@@ -87,16 +86,13 @@ body::before{
 
 .home-sub{
   margin:26px 0 0;
-
   width:520px;            
   font-size:13px;
   line-height:1.55;
   color:var(--muted);
-
   position:relative;
   left:800px;
   top:150px;
-
   text-align:justify;      
 }
 
@@ -123,20 +119,18 @@ body::before{
     width:100%;
     max-height:none;
     left:0;
-    top:0;   /* 🔥 여기로 위로 올림 */
+    top:0;
   }
 
   .home-sub{
     position:absolute;
     right:16px;
-    bottom:40px;
-
-    width:160px;
-
+    top:360px;
+    width:140px;
     font-size:8px !important;
     line-height:1.4 !important;
-
     text-align:left;
+    z-index:2;
   }
 
 }
